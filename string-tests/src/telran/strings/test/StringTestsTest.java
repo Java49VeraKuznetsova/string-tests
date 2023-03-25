@@ -35,22 +35,27 @@ class StringTestsTest {
 		assertEquals(0,"Test 3.3".compareToIgnoreCase("test 3.3"));
 		assertTrue("Test 3.3".compareToIgnoreCase("Test 3.2")>0);
 		assertFalse("Test 3.3".compareToIgnoreCase("Test 3.2")<0);
+		assertEquals(0, "Test 3.3".compareToIgnoreCase("Test 3.3"));
 	}
 @Test //3.4
 void testConcat () {
 	assertEquals("Test 3.4 concat", "Test 3.4 ".concat("concat"));
+	assertEquals("Test 3.4", "Test 3.4".concat(""));
+	assertEquals("Test 3.4", "".concat("Test 3.4"));
 	
 }
     @Test //3.5
     void testStartWith () {
     assertTrue("Test 3.5".startsWith("T"));
     assertFalse("Test 3.5".startsWith("tes"));
+    assertTrue("Test 3.5".startsWith(""));
     
     }
     @Test //3.6
     void testEendWith () {
     	assertTrue("Test".endsWith("st"));
     	assertFalse("Test 3.6".endsWith("6."));
+    	assertTrue("Test 3.6".endsWith(""));
     }
     @Test //3.7
     void testContains () {
