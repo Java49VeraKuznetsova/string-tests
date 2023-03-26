@@ -23,11 +23,16 @@ class StringTestsTest {
 		assertEquals("Exception", "Test".charAt(-4));
 	}
 	
+	//from Yuri: In the tests for compareTo / compareToIgnoreCase
+// there should be only assertTrue. 
 	@Test //3.2
 	void testCompareTo () {
 		assertTrue("Test 3.2".compareTo("Test")>0);
 		assertFalse("test 3.2".compareTo("Test 3.2")<0);
 		assertEquals(0, "Test 3.2".compareTo("Test 3.2"));
+		// add from Yuri
+		assertTrue("Test 3.2".compareTo("test 3.2")!= 0);
+		assertTrue("Test 3.2".compareTo("Test 3.2")== 0);
 	}
 	
 	@Test //3.3
@@ -35,12 +40,18 @@ class StringTestsTest {
 		assertEquals(0,"Test 3.3".compareToIgnoreCase("test 3.3"));
 		assertTrue("Test 3.3".compareToIgnoreCase("Test 3.2")>0);
 		assertFalse("Test 3.3".compareToIgnoreCase("Test 3.2")<0);
+	// add from Valdimir
 		assertEquals(0, "Test 3.3".compareToIgnoreCase("Test 3.3"));
+		// add from Yuri
+		assertTrue("Test 3.3".compareToIgnoreCase("Test 3.3")==0);
+		assertTrue("Test 3.3".compareToIgnoreCase("test 3.3")==0);
+		
 	}
 @Test //3.4
 void testConcat () {
 	assertEquals("Test 3.4 concat", "Test 3.4 ".concat("concat"));
 	assertEquals("Test 3.4", "Test 3.4".concat(""));
+	//add from Vladimir
 	assertEquals("Test 3.4", "".concat("Test 3.4"));
 	
 }
@@ -48,13 +59,15 @@ void testConcat () {
     void testStartWith () {
     assertTrue("Test 3.5".startsWith("T"));
     assertFalse("Test 3.5".startsWith("tes"));
+    //add from Vladimir
     assertTrue("Test 3.5".startsWith(""));
     
     }
     @Test //3.6
-    void testEendWith () {
+    void testEndWith () {
     	assertTrue("Test".endsWith("st"));
     	assertFalse("Test 3.6".endsWith("6."));
+    	//add from Vladimir
     	assertTrue("Test 3.6".endsWith(""));
     }
     @Test //3.7
@@ -69,9 +82,15 @@ void testConcat () {
     	assertEquals(0,"test 3.8 + test 3.9".indexOf("test"));
     }
     @Test //3.9
-    void lastIndexOf () {
+    //Testing of lastIndexOf there should be for the method lastIndexOf(int ch) but your tests for lastIndexOf(String str). 
+    //In Java "t" is a String but 't' is a char
+    void testLastIndexOf () {
     	assertEquals(-1, "Test 3.9".lastIndexOf("S"));
     	assertEquals(2, "Test 3.9".lastIndexOf("s"));
     	assertEquals(14,"test 3.8 + test 3.9".lastIndexOf("t"));
+    	// add from Yuri
+    	assertEquals(-1, "Test 3.9".lastIndexOf('S'));
+    	assertEquals(2, "Test 3.9".lastIndexOf('s'));
+    	assertEquals(14,"test 3.8 + test 3.9".lastIndexOf('t'));
     }
 }
