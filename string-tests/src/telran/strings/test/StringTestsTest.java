@@ -33,6 +33,13 @@ class StringTestsTest {
 		// add from Yuri
 		assertTrue("Test 3.2".compareTo("test 3.2")!= 0);
 		assertTrue("Test 3.2".compareTo("Test 3.2")== 0);
+		//Tests from Yuri
+		assertEquals(8, "9".compareTo("12345"));
+		assertEquals(-4, "12345".compareTo("12349"));
+		assertEquals(1, "123459".compareTo("12345"));
+		assertEquals(0, "Hello".compareTo("Hello"));
+		assertEquals('H' - 'h', "Hello".compareTo("hello"));
+		assertTrue("Hello".compareTo("hello") < 0);
 	}
 	
 	@Test //3.3
@@ -45,6 +52,12 @@ class StringTestsTest {
 		// add from Yuri
 		assertTrue("Test 3.3".compareToIgnoreCase("Test 3.3")==0);
 		assertTrue("Test 3.3".compareToIgnoreCase("test 3.3")==0);
+		// tests from Yuri
+		assertEquals(8, "9".compareToIgnoreCase("12345"));
+		assertEquals(-4, "12345".compareToIgnoreCase("12349"));
+		assertEquals(2, "12345yu".compareToIgnoreCase("12345"));
+		assertEquals(0, "Hello".compareToIgnoreCase("HeLlO"));
+		assertEquals(0, "Hello".compareToIgnoreCase("hello"));
 		
 	}
 @Test //3.4
@@ -74,6 +87,15 @@ void testConcat () {
     void testContains () {
     	assertTrue("Test 3.7".contains(" "));
     	assertFalse("Test 3.7".contains("3.7."));
+    	//tests from Yuri
+    	String hello = "Hello";
+    	assertTrue(hello.contains(hello));
+    	
+    	assertTrue(hello.contains("H"));
+    	assertTrue(hello.contains("el"));
+    	assertFalse(hello.contains("h"));
+    	assertFalse(hello.contains("le"));
+    	assertFalse(hello.contains("elo"));
     }
     @Test //3.8
     void testIndexOf () {
